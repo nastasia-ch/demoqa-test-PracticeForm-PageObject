@@ -25,8 +25,8 @@ public class RegistrationFormPage {
             hobbiesInput = $("#hobbiesWrapper"),
             pictureChoice = $("#uploadPicture"),
             addressInput = $("#currentAddress"),
-            setState = $("#stateCity-wrapper"),
-            setCity = $("#stateCity-wrapper");
+            stateInput = $("#stateCity-wrapper"),
+            cityInput = $("#stateCity-wrapper");
 
     private final static String TITLE_TEXT = "Student Registration Form";
 
@@ -39,14 +39,17 @@ public class RegistrationFormPage {
         executeJavaScript("$('#fixedban').remove()");
         return this;
     }
+
     public RegistrationFormPage setFirstName(String value) {
         firstNameInput.setValue(value);
         return this;
     }
+
     public RegistrationFormPage setLastName(String value) {
         lastNameInput.setValue(value);
         return this;
     }
+
     public RegistrationFormPage setEmail(String value) {
         emailInput.setValue(value);
         return this;
@@ -69,18 +72,18 @@ public class RegistrationFormPage {
     }
 
     public RegistrationFormPage setSubjects(String[] value) {
-        for (int j=0; j<value.length; j++) {
-            subjectsInput.setValue(value[j]).pressEnter();
+        for (String currentValue : value) {
+            subjectsInput.setValue(currentValue).pressEnter();
         } return this;
     }
 
     public RegistrationFormPage setHobbies(String[] value) {
-        for (int j=0; j<value.length; j++) {
-            hobbiesInput.$(byText(value[j])).click();
+        for (String currentValue : value) {
+            hobbiesInput.$(byText(currentValue)).click();
         } return this;
     }
 
-    public RegistrationFormPage chooseFile(String value) {
+    public RegistrationFormPage choosePicture(String value) {
         pictureChoice.uploadFromClasspath(value);
         return this;
     }
@@ -92,21 +95,17 @@ public class RegistrationFormPage {
 
     public RegistrationFormPage setState(String value) {
         $("#state").click();
-        setState.$(byText(value)).click();
+        stateInput.$(byText(value)).click();
         return this;
     }
 
     public RegistrationFormPage setCity(String value) {
         $("#city").click();
-        setCity.$(byText(value)).click();
-        return this;
-    }
-    public RegistrationFormPage clickSubmit() {
-        $("#submit").click();
+        cityInput.$(byText(value)).click();
         return this;
     }
 
-    public RegistrationFormPage checkResults(String gender, String s) {
+    public RegistrationFormPage clickSubmit() {
         $("#submit").click();
         return this;
     }

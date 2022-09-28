@@ -21,9 +21,10 @@ public class ResultsTableComponent {
         $(".table-responsive").$(byText(key)).parent().shouldHave(text(value));
         return this;
     }
+
     public ResultsTableComponent checkResultsArray(String key, String value[]) {
-        for(int i=0; i< value.length; i++) {
-            $(".table-responsive").$(byText(key)).parent().shouldHave(text(value[i]));
-        }return this;
+        for (String currentValue : value) {
+            $(".table-responsive").$(byText(key)).parent().shouldHave(text(currentValue));
+        } return this;
     }
 }
